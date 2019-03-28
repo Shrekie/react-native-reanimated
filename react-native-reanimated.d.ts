@@ -58,7 +58,7 @@ declare module 'react-native-reanimated' {
     export type Adaptable<T> =
       | T
       | AnimatedNode<T>
-      | ReadonlyArray<T | AnimatedNode<T>>;
+      | ReadonlyArray<Adaptable<T>>;
     type BinaryOperator = (
       left: Adaptable<number>,
       right: Adaptable<number>
@@ -80,7 +80,7 @@ declare module 'react-native-reanimated' {
       deceleration: Adaptable<number>;
     }
     export interface BackwardCompatibleWrapper {
-      start: (callback : (data: { finished: boolean }) => any) => void;
+      start: (callback?: (data: { finished: boolean }) => any) => void;
       stop: () => void;
     }
 
@@ -150,6 +150,7 @@ declare module 'react-native-reanimated' {
       AnimateProps<ViewStyle, ScrollViewProps>
     >;
     export const Code: ComponentClass<CodeProps>;
+    export function createAnimatedComponent(component: any): any;
 
     // classes
     export {
@@ -168,6 +169,10 @@ declare module 'react-native-reanimated' {
     export const sqrt: UnaryOperator;
     export const sin: UnaryOperator;
     export const cos: UnaryOperator;
+    export const tan: UnaryOperator;
+    export const acos: UnaryOperator;
+    export const asin: UnaryOperator;
+    export const atan: UnaryOperator;
     export const exp: UnaryOperator;
     export const round: UnaryOperator;
     export const floor: UnaryOperator;
